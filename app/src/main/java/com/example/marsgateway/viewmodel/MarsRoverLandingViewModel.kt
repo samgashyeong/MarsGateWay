@@ -32,7 +32,6 @@ class MarsRoverLandingViewModel(repository: MarsRoverLandingRepository) : ViewMo
                     if (response.isSuccessful) {
                         photosList.setValue(response.body())
                         Log.e("success", "success")
-                        MarsRoverLandingFragment().noSearchVisibility()
                     }
                     else if (response.code() == 500) {
                         Toast.makeText(application, "Rover has not uploaded the photo yet.", Toast.LENGTH_SHORT).show()

@@ -85,10 +85,4 @@ class MarsRoverLandingFragment : Fragment() {
 
         return binding.root
     }
-
-    fun noSearchVisibility(){
-        Log.e(TAG, "noSearchVisibility: gone됨", )
-        view?.findViewById<ImageView>(R.id.noSearchImage)?.visibility = View.GONE
-        view?.findViewById<TextView>(R.id.noSearchText)?.visibility = View.GONE
-    }
 }

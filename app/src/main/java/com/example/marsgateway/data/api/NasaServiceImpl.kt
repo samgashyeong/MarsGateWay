@@ -26,16 +26,4 @@ object NasaServiceImpl {
         }
         return instance!!
     }
-
-    fun getMarsWeatherService() : NasaService = getInstanceWeb().create(NasaService::class.java)
-
-    private fun getInstanceWeb(): Retrofit {
-        if (instanceWeb == null) {
-            instanceWeb = Retrofit.Builder()
-                .baseUrl(baseUrl_web)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        }
-        return instanceWeb!!
-    }
 }

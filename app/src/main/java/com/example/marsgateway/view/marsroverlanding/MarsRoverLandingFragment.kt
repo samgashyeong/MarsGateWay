@@ -1,5 +1,6 @@
 package com.example.marsgateway.view.marsroverlanding
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,9 @@ import kotlinx.coroutines.launch
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -79,7 +83,12 @@ class MarsRoverLandingFragment : Fragment() {
             }
         }
 
-
         return binding.root
+    }
+
+    fun noSearchVisibility(){
+        Log.e(TAG, "noSearchVisibility: gone됨", )
+        view?.findViewById<ImageView>(R.id.noSearchImage)?.visibility = View.GONE
+        view?.findViewById<TextView>(R.id.noSearchText)?.visibility = View.GONE
     }
 }

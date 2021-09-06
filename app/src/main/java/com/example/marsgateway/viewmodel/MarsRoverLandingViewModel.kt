@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.marsgateway.model.MarsRoverResponseModel
 import com.example.marsgateway.repository.MarsRoverLandingRepository
+import com.example.marsgateway.view.marsroverlanding.MarsRoverLandingFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +15,7 @@ import retrofit2.Response
 class MarsRoverLandingViewModel(repository: MarsRoverLandingRepository) : ViewModel() {
     private val repository : MarsRoverLandingRepository = repository
     var photosList : MutableLiveData<MarsRoverResponseModel> = MutableLiveData()
-
+    var viewIsOn : Boolean = false
 
     suspend fun getPhotos(application: Application,earthDate : String, page : Int, apiKey : String) {
         if (photosList != MutableLiveData<MarsRoverResponseModel>()) {
@@ -31,6 +32,7 @@ class MarsRoverLandingViewModel(repository: MarsRoverLandingRepository) : ViewMo
                     if (response.isSuccessful) {
                         photosList.setValue(response.body())
                         Log.e("success", "success")
+                        MarsRoverLandingFragment().noSearchVisibility()
                     }
                     else if (response.code() == 500) {
                         Toast.makeText(application, "Rover has not uploaded the photo yet.", Toast.LENGTH_SHORT).show()
